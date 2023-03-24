@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove User</title>
+</head>
+<body>
+<h1>Remove User</h1>
+<form method="POST">
+    <label for="fid">ID: </label>
+    <input type="number" id="fid" name="fid" required>
+    <input type="submit" value="Submit"><br>
+    <button type="button" onclick="location.href='/'">Home</button>
+</form>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</body>
+</html>
