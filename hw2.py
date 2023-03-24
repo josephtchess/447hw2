@@ -17,6 +17,21 @@ class Users(db.Model):
 def home():
     return render_template("index.html")
 
+@app.route("/update/", methods=['GET', 'POST'])
+def update():
+    if request.method == 'POST':
+        name = request.form.get('fname')
+        id = request.form.get('fid')
+        points = request.form.get('fscore')
+        user = Users.query.filter_by(m_id = id).first()
+        if not user:
+            flash("User with ID " + id + " does not exist in database")
+        else:
+            user.m_points = points
+            user.m_name = name
+            db.session.commit()
+    return render_template("update.html")
+
 @app.route("/add/", methods=['GET', 'POST'])
 def add():
     if request.method == 'POST':
